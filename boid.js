@@ -8,7 +8,7 @@ class Boid {
         this.velocity = p5.Vector.random2D();
         this.velocity.setMag(random(1, 4));
         this.acceleration = createVector();
-        this.maxForce = 0.3;
+        this.maxForce = 0.4;
         this.maxSpeed = 20
     }
 
@@ -44,7 +44,8 @@ class Boid {
         //  else; {
         //    steering.setMag(total * 2);
         //  }
-          steering.setMag(this.maxSpeed);   
+          //steering.setMag(this.maxSpeed);   
+          steering.setMag(total * 0.25);
           steering.sub(this.velocity);
           steering.limit(this.maxForce);
         }
@@ -52,7 +53,7 @@ class Boid {
       }
 
       cohesion(boids) {
-        let perceptionRadius = 500;
+        let perceptionRadius = 400;
         let steering = createVector();
         let total = 0;
         for (let other of boids) {
@@ -71,7 +72,8 @@ class Boid {
         //  else; {
         //    steering.setMag(total * 2);
         //  }
-          steering.setMag(this.maxSpeed);
+          // steering.setMag(this.maxSpeed);
+          steering.setMag(total * 0.25);
           steering.sub(this.velocity);
           steering.limit(this.maxForce);
         }
@@ -99,7 +101,8 @@ class Boid {
         //  else; {
         //    steering.setMag(total * 2);
         //  }
-          steering.setMag(this.maxSpeed);
+          // steering.setMag(this.maxSpeed);
+          steering.setMag(total * 0.25);
           steering.sub(this.velocity);
           steering.limit(this.maxForce);
         }
